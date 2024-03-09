@@ -1,0 +1,41 @@
+GET http://localhost:5832/api/login/allUsers
+
+
+
+POST http://localhost:5832/api/login/register
+Content-Type: application/json
+
+{
+	"name": "LavishK",
+	"email": "hehe",
+	"password": "bruh",
+	"bookmarks": [],
+	"recentRead": []
+}
+###
+
+POST http://localhost:5832/api/login/login 
+Content-Type: application/json
+
+{
+	"userName": "LavishK",
+	"password": "W16004608"
+}
+
+###
+POST http://localhost:5832/api/login/userInfo
+Content-Type: application/json
+
+{
+	"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTGF2aXNoSyIsImlhdCI6MTY1OTIyMTQyNywiZXhwIjoxNjU5MjIzMjI3fQ.V6FbIWFgxxGGI179cMXZTq95DSVS6-I_Pc9OKuZ6NxM",
+	"recentRead" : ["The-Gamer-chapter-78-index-5","The-Gamer-chapter-79-index-5","The-Gamer-chapter-77-index-5","The-Gamer-chapter-76-index-5","The-Gamer-chapter-73-index-5","The-Gamer-chapter-75-index-5","The-Gamer-chapter-74-index-5","The-Gamer-chapter-71-index-5","The-Gamer-chapter-72-index-5","Onepunch-Man-chapter-164-index-2","Onepunch-Man-chapter-163-index-2","Onepunch-Man-chapter-161-index-2","Onepunch-Man-chapter-162-index-2","Onepunch-Man-chapter-160-index-2","Onepunch-Man-chapter-159-index-2"],
+	"bookmarks": [{"Series":"Jujutsu Kaisen","Index":"Jujutsu-Kaisen"},{"Series":"The Gamer","Index":"The-Gamer"},{"Series":"My Hero Academia","Index":"Boku-No-Hero-Academia"},{"Series":"Omniscient Reader","Index":"Omniscient-Readers-Viewpoint"},{"Series":"The Way of the Househusband","Index":"Gokushufudou-The-Way-Of-The-House-Husband"}]
+}
+
+### 
+POST http://localhost:5832/api/login/newAccessToken
+Content-Type: application/json
+
+{
+	"refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTGF2aXNoSyIsImlhdCI6MTY1OTIyMDg1MiwiZXhwIjoxNjYxODEyODUyfQ._qZ_OikTP-tRyIt8UYok3QilAPg6Sc2n5du7hu8EaaM"
+}

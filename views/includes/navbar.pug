@@ -1,0 +1,53 @@
+include login.pug
+header
+    div.headerSearhConta
+        a.logoContainer(href='/manga/')
+            img(alt='logo image', src='/images/navbar.brand.png',width='250',style='margin-top:10px')
+        div.search_container
+            div.search_bar
+                input#Search_input(placeholder='Quick Search...')
+                div.search_icon_container
+                    i(class="fas fa-search",style="font-size:20px;cursor:pointer;")
+            ul#search_results(style="z-index:90", class="search_results")
+    div.navInfo
+        div(style="flex-direction:row;display:flex;height:100%;")
+            a#Home_nav.small_nav(href='/manga/')
+                i.fas.fa-home
+                span &nbsp;Home
+            a#Bookmark_nav.small_nav(href='/manga/bookmarks')
+                i.fas.fa-bookmark
+                span &nbsp;Bookmarks
+            a#Directory_nav.small_nav(href='/manga/directory')
+                i.far.fa-folder-open
+                span &nbsp;Directory
+            a#Search_nav.small_nav(href='/manga/search' style='')
+                i.fas.fa-search
+                span &nbsp;Search
+            a#Darkmode.small_nav(href="#",onclick='handleDarkModeToggle()' style='cursor:pointer;')
+                i.fas.fa-sun
+                span &nbsp;Dark Mode off
+            a.small_nav(href='/manga/recentChapters' id="Read_nav" title="See if there any new chapters from manga you have bookmarked" style='cursor:pointer;')
+                i.fas.fa-clock
+                span &nbsp; Recent Chapters
+            div(style="margin-left:auto;position:relative;")
+                div#Login_nav(onclick="toggleLoginModal()",class="small_nav",style="cursor:pointer;height:100%;box-sizing:border-box")
+                    i(class="fas fa-sign-in-alt")
+                    span &nbsp;Login
+                div#dropdown_box(class="dropdown_box")
+                    a(href="settings.html",class="small_nav")
+                        i(class="fas fa-cog") 
+                        span &nbsp;Settings
+                    a(href="#", onclick="logOutUser()", class="small_nav")
+                        i(class="fas fa-sign-out-alt") 
+                        span &nbsp;Logout
+div#scroll_to_top
+    i(class="fas fa-angle-up")
+div#dark_mode
+    i
+script
+  include /js/quickSearch.js
+script
+  include /js/susManga.js
+script 
+  include /js/subscribe.js
+script(src="//cdn.rawgit.com/mozilla/localForage/master/dist/localforage.js")

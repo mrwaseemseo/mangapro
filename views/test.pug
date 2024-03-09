@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+    head
+    title !{title}
+    meta(name="viewport",content="width=device-width, initial-scale=1")
+    meta(charset="UTF-8")
+    meta(name="description",content="Read Chapter" + title)
+    meta(name="theme-color" content="#000000")
+    link(rel="manifest" href="/pwa.webmanifest")
+    style
+        include /css/style.css
+    style
+        include /css/thin_navbar.css
+    link(rel="stylesheet" href="/offline/all.css")
+    script(src="https://kit.fontawesome.com/9c2fbbf0d7.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js")
+    body(style="margin:0px")
+        include includes/thin_navbar.pug
+        div#imgs
+            - var i = 0;
+            while i < imageURlS.length
+                - var imageLOL = imageURlS[i]
+                img(src="" + imageLOL,class="manga_page img-fluid HasGap ng-scope")
+                - i++
+        div(style="margin:0px 2.53%;")
+            include includes/comments.pug
+        script
+            include /js/index.js
+        script 
+            include /js/readHtml.js

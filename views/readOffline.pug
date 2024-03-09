@@ -1,0 +1,48 @@
+doctype html
+html(lang="en")
+    head
+    title Read Chapter Offline
+    meta(name="viewport",content="width=device-width, initial-scale=1")
+    meta(charset="UTF-8")
+    meta(name="description",content="Read Chapter Offline")
+    meta(name="theme-color" content="#000000")
+    link(rel="manifest" href="/pwa.webmanifest")
+    style
+        include /css/style.css
+    style
+        include /css/thin_navbar.css
+    link(rel="stylesheet" href="/offline/all.css")
+
+    body(style="margin:0px")
+        include includes/thin_navbar.pug
+        div#read_options
+            a.option(href='/manga/manga/' ,style="flex:0 0 33.333333%;max-width:33.333333%;")
+                i(class="fas fa-book") &nbsp;
+                span !{seriesName}
+            a.option
+                i(class="fas fa-stream") &nbsp;
+                span
+            a.option    
+                i(class="far fa-file") &nbsp;
+                span#pageNumber Page 1
+            a.option(onclick="longStrip = !longStrip,changeReadingStyle(this)",id="readingStyle")
+                i(class="fas fa-arrows-alt-v") &nbsp;
+                span Long Strip
+            a.option(onclick="bookMark(this)", id ="bookMark")
+                i(class="fas fa-thumbtack") &nbsp;
+                span Bookmark
+            a.option()
+                i(class="fas fa-arrow-down") &nbsp;
+                span Download Chapter
+        div#imgs
+
+        script 
+            include /js/offlineRead.js
+
+        script
+            include /js/index.js
+        div#Footer
+            a(href="/") Home
+            a(href="/contact/") Contact
+            a(href="/privacy/") Privacy
+            div Copyright © MangaSee 2024

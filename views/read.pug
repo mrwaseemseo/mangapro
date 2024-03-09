@@ -1,0 +1,60 @@
+doctype html
+html(lang="en")
+    head
+    title !{title}
+    meta(name="viewport",content="width=device-width, initial-scale=1")
+    meta(charset="UTF-8")
+    meta(name="description",content="Read Chapter" + title)
+    meta(name="theme-color" content="#000000")
+    link(rel="manifest" href="/pwa.webmanifest")
+    style
+        include /css/style.css
+    style
+        include /css/thin_navbar.css
+    link(rel="stylesheet" href="/offline/all.css")
+    script(src="https://kit.fontawesome.com/9c2fbbf0d7.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js")
+    body(style="margin:0px")
+        include includes/thin_navbar.pug
+        div#read_options
+            a.option(href='/manga/manga/' + currentChapter.indexName ,style="flex:0 0 33.333333%;max-width:33.333333%;")
+                i(class="fas fa-book") &nbsp;
+                span !{seriesName}
+            a.option
+                i(class="fas fa-stream") &nbsp;
+                span !{currentChapter.Type + ' ' + currentChapter.Chapter}
+            a.option    
+                i(class="far fa-file") &nbsp;
+                span#pageNumber Page 1
+            a.option(onclick="longStrip = !longStrip,changeReadingStyle(this)",id="readingStyle")
+                i(class="fas fa-arrows-alt-v") &nbsp;
+                span Long Strip
+            a.option(onclick="bookMark(this)", id ="bookMark")
+                i(class="fas fa-thumbtack") &nbsp;
+                span Bookmark
+            a.option(href="/manga/download/" + chapterLink)
+                i(class="fas fa-arrow-down") &nbsp;
+                span Download Chapter
+        div#imgs
+            - var i = 0;
+            while i < imageURlS.length
+                - var imageLOL = imageURlS[i]
+                img(src="" + imageLOL,class="manga_page")
+                - i++
+        div(style="margin:0px 2.53%;")
+        script
+            include /js/index.js
+        script 
+            include /js/readHtml.js
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+        script.
+          var chapters = !{JSON.stringify(chapters).replace(/<\//g, '<\\/')} 
+          var currentChapter = !{JSON.stringify(currentChapter).replace(/<\//g, '<\\/')}    
+          changeBookMarkStatus(document.getElementById("bookMark"));
+          function DoNothing(t){t.preventDefault()}$("body").on("click","a",function(t){href=$(this).attr("href"),"#"==href&&t.preventDefault()});
+        div#Footer
+            a(href="/") Home
+            a(href="/contact/") Contact
+            a(href="/privacy/") Privacy
+            div Copyright © MangaSee 2024
+        

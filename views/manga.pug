@@ -1,0 +1,66 @@
+- var isBlocked = process.env['SERVERNAME'] == 'https://mangaapi.lavishkumar1.repl.co/' ? true : false;
+doctype html
+html(lang="en")
+  head
+    title !{SeriesName} | Magma Manga
+    meta(name="viewport",content="width=device-width, initial-scale=1.0, maximum-scale=1.0") 
+    meta(charset="UTF-8")
+    meta(name="theme-color" content="#000000")
+    meta(name="description",content=`Read ${SeriesName} on Magma Manga`)
+    link(rel="manifest" href="/pwa.webmanifest")
+    style 
+      include /css/thin_navbar.css
+    style
+      include /css/style.css
+    script(src="https://kit.fontawesome.com/9c2fbbf0d7.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js")
+  body
+    include includes/thin_navbar.pug
+    include includes/reusableProps.pug
+    div#main
+      div(style="background-color:white;margin-top:30px;border-radius:8px 8px 0px 0px;padding:15px;")
+        div(class="manga_info")
+          if isBlocked
+            img.manga_img(src="//axiostrailbaby.lavishkumar1.repl.co/sendImage/" + ("temp.compsci88.com/cover/" + IndexName + '.jpg').replaceAll('/', ' '))
+          else  
+            img(class="manga_img", src="//temp.compsci88.com/cover/" + IndexName + '.jpg')
+          div(style="margin-left:20px;flex:0 0 70%")
+            ul.manga_info_ul
+              li
+                h1(style="margin:0px;padding:5px;") !{SeriesName}
+              - var i = 0;
+              while i < Info.length
+                  - var infoStuff = Info[i]
+                  li 
+                    span #{infoStuff.type + ': '}
+                    if infoStuff.type == 'Description'
+                      div #{infoStuff.info}
+                    else if infoStuff.type == 'Alternate Name(s)'
+                      span(style="font-weight:400;") #{infoStuff.info}
+                    else
+                      - var allInfo = infoStuff.info;
+                      - var k = 0;
+                      while k < allInfo.length
+                        if k == 0 && infoStuff.type != 'Description'
+                          a(href="/manga/search",style="margin-left:2px") #{allInfo[k]}
+                        else
+                          a(href="#") #{allInfo[k]}
+                        if k < allInfo.length - 1
+                          span(style="font-weight:400") #{', '}
+                        - k++
+                  - i++
+        ul#Chapters_List
+    script
+      include /js/index.js
+    script.
+        var allChapters =  !{JSON.stringify(Chapters).replace(/<\//g, '<\\/')}
+        var allChaptersRead = JSON.parse(window.localStorage.getItem('recentRead'))
+        var IndexName = "!{IndexName}"
+        var SeriesName = "!{SeriesName}"
+    script
+      include /js/mangaHtml.js
+    div#Footer
+      a(href="/") Home
+      a(href="/contact/") Contact
+      a(href="/privacy/") Privacy
+      div Copyright © MangaSee 2024

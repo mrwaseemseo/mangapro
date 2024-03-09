@@ -1,0 +1,299 @@
+.commentBackground {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin: 25px 0px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.commentBackground .commentHead {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.submitCommentCont {
+    margin-top: 10px;
+    padding: 10px 10px;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.submitCommentCont .commentInput {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+    font-size: 17px;
+    background-color: #e5f6ff78;
+    min-height: 50px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    transition: all 0.15s ease-in;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.submitCommentCont .commentInput:focus {
+    outline: none;
+    border: 1px solid #007bff;
+    background-color: white;
+}
+
+.submitCommentCont .submitButton {
+    padding: 8px 10px;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    max-width: 100px;
+    margin-top: 10px;
+    font-size: 15px;
+    align-self: flex-end;
+    font-weight: 500;
+    transition: all 0.15s ease-in;
+}
+
+.submitCommentCont .submitButton:hover {
+    background-color: #008d06;
+}
+
+.submitCommentCont .submitCommentFooter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submitCommentCont .submitCommentFooter input[type="checkbox"] {
+    transform: scale(1.25);
+    margin-right: 5px;
+}
+
+#comments .comment {
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+}
+
+#comments .comment .commentHeader {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+#comments .comment .commentOptions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#comments .comment .commentFooter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.commentOptions {
+    font-size: 20px;
+}
+
+.commentOptions div {
+    margin: 0px 10px;
+    cursor: pointer;
+    transition: all 0.15s ease-in;
+    color: #484848;
+}
+
+.commentOptions div:hover {
+    transform: scale(1.25);
+    color: black;
+}
+
+.commentOptions .fa-xmark:hover {
+    color: #d9534f;
+}
+
+.commentFooter div {
+    margin: 0px 10px;
+    cursor: pointer;
+    transition: all 0.15s ease-in;
+    color: #484848;
+}
+
+.commentLike:hover {
+    transform: scale(1.25);
+    color: #FF4500;
+} 
+
+.commentDislike:hover {
+    transform: scale(1.25);
+    color: #7193FF;
+}
+
+.commentFooter div:first-of-type{
+    margin-left: 0px;
+}
+
+.commentFooter {
+    margin: 10px 0px;
+}
+
+[contenteditable=true]:empty:before {
+    content: attr(placeholder);
+    pointer-events: none;
+    display: block;
+    color: rgba(0, 0, 0, 0.461);
+    /* For Firefox */
+}
+
+.giphyModal {
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    justify-content: center;
+    align-items: center;
+}
+
+.giphyModal .giphyModalContent {
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: 600px;
+    overflow-y: auto;
+}
+
+.giphyModal .giphyModalContent .giphyModalHeader {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.giphyModal .giphyModalContent .giphyModalHeader .giphyModalClose {
+    cursor: pointer;
+    font-size: 20px;
+    color: #aaa;    
+}
+
+.giphyModal .giphyModalContent .giphyModalHeader .giphyModalClose:hover {
+    color: black;
+}
+
+.giphyModal .giphyModalContent .giphyModalBody {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    padding: 0px 20px 20px 20px;
+}
+
+.giphySearchCont {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.giphySearchCont input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 17px;
+    background-color: #e5f6ff78;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    transition: all 0.15s ease-in;
+    width: 200px;
+}
+
+.giphySearchCont input:focus {
+    outline: none;
+    border: 1px solid #007bff;
+    background-color: white;
+}
+
+.giphyResults {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.giphyResults .gif image {
+    width: 200px;
+}
+
+.giphyResults .gif {
+    background-color: black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.loadMoreButton {
+    padding: 8px 0px;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    margin: 10px 0px 20px 0px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 400;
+    transition: all 0.15s ease-in;
+}
+
+.loadMoreCont {
+    padding: 0px 20px;
+    display: none;
+}
+
+.commentFooter .commentReply:hover {
+    transform: scale(1.15);
+}
+
+.replyingToText {
+    margin-bottom: 10px;
+    color: #007bff;
+    cursor: pointer;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}

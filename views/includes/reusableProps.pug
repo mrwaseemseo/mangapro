@@ -1,0 +1,103 @@
+// Admin Recomaddation maker
+mixin adminRecd(recd)
+    - var isBlocked = process.env['SERVERNAME'] == 'https://mangaapi.lavishkumar1.repl.co/'? true : false;
+    a(href="/manga/manga/" + recd.IndexName)
+        if isBlocked
+          img#Admin_Img(src="//axiostrailbaby.lavishkumar1.repl.co/sendImage/" + ("temp.compsci88.com/cover/" + recd.IndexName + '.jpg').replaceAll('/', ' '))
+        else
+          img#Admin_Img(alt="adminImage", src= "//temp.compsci88.com/cover/" + recd.IndexName + ".jpg")
+    div.admin_text
+        a#Admin_Title(href="/manga/manga/" + recd.IndexName, class="admin_hover_text")
+            span #{recd.SeriesName}
+        div
+            span Year:
+                a.admin_hover_text(href="/manga/search?&Year=" + recd.Year) &nbsp;#{recd.Year}
+
+        div    
+            span Status:
+                a.admin_hover_text(href="/manga/search?&Scan%20Status=" + recd.ScanStatus) &nbsp;#{recd.ScanStatus} (Scan)
+                span ,
+                a.admin_hover_text(href="/manga/search?&Publish%20Status=" + recd.PublishStatus) &nbsp;#{recd.PublishStatus} (Publish)
+        div(style="max-width:570px")
+            span Genres:
+            each genre, indx in recd.Genres
+                a.admin_hover_text(href="/manga/search?&Genres=" + genre) &nbsp;#{genre}
+                if indx != recd.Genres.length - 1
+                    span ,
+
+// Hot Update 
+mixin hotUpdate(allMangas)
+    - var i = 0;
+    - var isBlocked = process.env['SERVERNAME'] == 'https://mangaapi.lavishkumar1.repl.co/' ? true : false;
+    while i < 12
+        - var manga = allMangas[i]
+        div.hot_update_item
+            a(href="/manga/read/"+ manga.ChapterLink + "-page-1", title="" + manga.SeriesName + " Chapter " + manga.Chapter)
+                if manga.isSus
+                    div.red_overlay
+                        i(class="fa-solid fa-circle-question", title="This manga might be Hentai (manga porn)")
+                else
+                    div
+                div.hot_update_item_name 
+                    if manga.SeriesName.length > 18
+                        span #{manga.SeriesName.substr(0,18) + '... ' + manga.Chapter}
+                    else
+                        span #{manga.SeriesName + ' ' + manga.Chapter }
+                if isBlocked
+                  img(src="//axiostrailbaby.lavishkumar1.repl.co/sendImage/" + ("temp.compsci88.com/cover/" + manga.IndexName + '.jpg').replaceAll('/', ' ') , style="max-width:145px;")
+                else  
+                  img(alt=manga.SeriesName,src = "//temp.compsci88.com/cover/" + manga.IndexName + ".jpg", style="max-width:145px;")
+        - i++;
+
+mixin hotMangaOfMonth(mangas)
+    - var i = 0;
+    while i < 6
+        - var manga = mangas[i]
+        a.admin_hover_text(href="#", style="color:black;font-size:20px;margin:0px 5px") /
+        a.admin_hover_text(style="font-size:17px;",href="manga.html?manga=" + manga.IndexName) #{manga.SeriesName}
+        - i++
+
+mixin LatestChapters(latestChapters, hotChapters)
+    - var i = 0;
+    - var isBlocked = process.env['SERVERNAME'] ==  'https://mangaapi.lavishkumar1.repl.co/' ? true : false;
+    while i < 60
+        - var manga = latestChapters[i]
+        - var isCompleted = manga.ScanStatus == 'Complete' ? true : false
+        - var isPopular = false
+        - var h = 0;
+
+        while h < hotChapters.length
+            if hotChapters[h].SeriesID == manga.SeriesID
+                - isPopular = true
+                - h+= 2000
+            - h++
+
+        div.latest_chapters_item
+            a(href="/manga/manga/" + manga.IndexName, title="" + manga.SeriesName)
+                if manga.isSus
+                    div.red_overlay
+                        i(class="fa-solid fa-circle-question", title="This manga might be Hentai (manga porn)")
+                else 
+                    div
+                if isBlocked
+                  img(src="//axiostrailbaby.lavishkumar1.repl.co/sendImage/" + ("temp.compsci88.com/cover/" + manga.IndexName + '.jpg').replaceAll('/', ' '), width="90")
+                else
+                  img(alt=manga.SeriesName, src="//temp.compsci88.com/cover/" + manga.IndexName + ".jpg",width="90")
+            a(style="display:contents;", href="/manga/read/" + manga.ChapterLink + '-page-1', title="" + manga.SeriesName + " Chapter " + manga.Chapter)
+                div(style="margin-left:15px; margin-top:8px;")
+                    div.latest_chapters_info
+                        if isPopular
+                            i(class="fas fa-fire-alt",style="color:red;") &nbsp;
+                        if isCompleted
+                            i(style="color:darkorange",class="fas fa-check-circle") &nbsp;
+                        span #{manga.SeriesName}
+                    div(style="margin-top:0px;")
+                        i(class="far fa-file", style="font-size:15px;color:black;")
+                        span(style="font-size:14px;font-weight:500;color:black;") &nbsp;Chapter #{manga.Chapter}
+                    div(style="margin-top:1px;")
+                        i(class="far fa-clock", style="font-size:15px;color:black;")
+                        span(style="font-size:14px;font-weight:500;color:black;") &nbsp;#{manga.Date}
+        - i++
+
+
+// chapter modal

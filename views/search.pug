@@ -1,0 +1,64 @@
+// !{variable name} this for using the passed in data
+doctype html
+html(lang="en")
+    head
+        //| !{p1}
+        title Directory 
+        meta(name="viewport",content="width=device-width, initial-scale=1.0, maximum-scale=1.0")
+        meta(charset="UTF-8")
+        meta(name="theme-color" content="#000000")
+        meta(name="description",content="Search for Manga by Series Name, Author, Year over a list of 1000+ Manga")
+        link(rel="manifest" href="/pwa.webmanifest")
+        style 
+            include /css/navbar.css
+        style
+            include /css/style.css
+        style
+            include /css/search.css
+        script(src="https://kit.fontawesome.com/9c2fbbf0d7.js")
+        script(src="https://code.jquery.com/jquery-3.7.0.slim.js")
+    body(style="margin:0px")
+        include includes/navbar.pug
+        include includes/reusableProps.pug
+        img#loading(alt="loading", class="image_center", src="/images/loading.svg",width="80")
+        div#main.none
+            div
+                div.searchHeader
+                    i(class="fas fa-search")
+                    span &nbsp;Search Manga&nbsp;
+                    span#amountOfManga
+                div.searchContainer
+                    div.containInputs
+                        div
+                            span Series Name:
+                            input(type="text",spellcheck="false",onkeyup="handleChangeInValue(this)")
+                        div 
+                            span Author:
+                            input(type="text",spellcheck="false",onkeyup="handleChangeInValue(this)")
+                        div 
+                            span Year:
+                            input(type="text",spellcheck="false",onkeyup="handleChangeInValue(this)")
+                    div.borderBottom
+                    div.containFilterAndResults
+                        div#resultsContainer
+                            div.result_item
+                                a(href="#")
+                                    img(src="https://temp.compsci88.com/cover/Killstagram.jpg")
+                                div.detailContainer 
+                                    a(href="#") #Killstagram
+                                    div.gray Author:&nbsp;
+                                        span.blue Ryoung&nbsp;
+                                        | &#183; Year: 
+                                        span.blue 2019
+                        div#filters
+                    div#load_more(onclick="loadMoreManga()") Load More ...
+
+        script
+            include /js/index.js
+        script
+            include /js/search.js
+        div#Footer
+            a(href="/") Home
+            a(href="/contact/") Contact
+            a(href="/privacy/") Privacy
+            div Copyright © MangaSee 2024
