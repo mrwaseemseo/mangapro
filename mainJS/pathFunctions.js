@@ -1,5 +1,5 @@
 const fetch = require('node-fetch'); // fetchs html
-const serverName = process.env['SERVERNAME'] || 'http://localhost:5832/';
+const serverName = process.env['https://mangareaders.netlify.app/'] || 'http://localhost:5832/';
 var isPupServerLoaded = true;
 const moment = require('moment')
 const fs = require('fs');
